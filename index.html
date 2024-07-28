@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Express - practical</title>
+</head>
+
+<body>
+    <h2 style="text-align: center; color: rgb(66, 37, 88)">
+        Calculator
+    </h2>
+    <div class="container">
+        <div class="inputs">
+            <input id="num-1" type="text" placeholder="Enter the number 1" />
+            <input id="num-2" type="text" placeholder="Enter the number 2" />
+            <select name="operation" id="operation">
+                <option value="add">Addition</option>
+                <option value="sub">Subtraction</option>
+                <option value="mul">Multiplication</option>
+                <option value="div">Division</option>
+            </select>
+        </div>
+        <button class="btn" onclick="apiCall()">Calculate</button>
+        <h2>Result: <span id="result">Waiting</span></h2>
+    </div>
+</body>
+<script>
+    const apiCall = async () => {
+        const val1 = document.getElementById('num-1').value;
+        const val2 = document.getElementById('num-2').value;
+        const operation = document.getElementById('operation').value;
+        const elem = document.getElementById('result_heading');
+
+        const setSuccessClass = () => {
+            elem.classList.remove("result_heading_error");
+            elem.classList.add("result_heading_success");
+        }
+
+        const setErrorClass = () => {
+            elem.classList.remove("result_heading_success");
+            elem.classList.add("result_heading_error");
+        }
+        try {
+            const response = await fetch(`/calculate?num1=${val1}&num2=${val2}&opr=${operation}`);
+            const dataObj = await response.json();
+            const resultElem = document.getElementById('result');
+            resultElem.innerHTML = dataObj.data ? dataObj.data :  " " + dataObj.message;
+            dataObj.statusCode == 200 ? setSuccessClass() : setErrorClass(); 
+        } catch (error) {
+            console.log("Error: ", error);
+        }
+    };
+</script>
+
+</html>
