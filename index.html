@@ -28,8 +28,8 @@
 </body>
 <script>
     const apiCall = async () => {
-        const val1 = document.getElementById('num-1').value;
-        const val2 = document.getElementById('num-2').value;
+        const value1 = document.getElementById('num-1').value;
+        const value2 = document.getElementById('num-2').value;
         const operation = document.getElementById('operation').value;
         const elem = document.getElementById('result_heading');
 
@@ -43,7 +43,7 @@
             elem.classList.add("result_heading_error");
         }
         try {
-            const response = await fetch(`/calculate?num1=${val1}&num2=${val2}&opr=${operation}`);
+            const response = await fetch(`/calculate?value1=${value1}&value2=${value2}&operation=${operation}`);
             const dataObj = await response.json();
             const resultElem = document.getElementById('result');
             resultElem.innerHTML = dataObj.data ? dataObj.data :  " " + dataObj.message;

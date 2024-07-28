@@ -24,11 +24,11 @@ app.get('/calculate', (req, res) => {
     const response = { statusCode: 200, message: 'success'};
     const errorResponse = { statusCode: 403, message: 'Invalid input' }
         if (value1 && value2) {
-            if(operation ==='sub'){
+            if(operation =='sub'){
                 res.send({...response, data: value1 - value2});
-            } else if(operation ==='mul') {
+            } else if(operation =='mul') {
                 res.send({...response, data: value1 * value2});
-            } else if(operation ==='div') {
+            } else if(operation =='div') {
                 (value2 !== 0) ?  res.send({...response, data: value1 / value2}) : res.send(errorResponse);
             } else {
                 res.send({...response, data: value1 + value2});
