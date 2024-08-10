@@ -2,56 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Express - practical</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIT 725 Prac 3</title>
+  <!-- Google icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Custom Style Sheet-->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <h2 style="text-align: center; color: rgb(66, 37, 88)">
-        Calculator
-    </h2>
-    <div class="container">
-        <div class="inputs">
-            <input id="num-1" type="text" placeholder="Enter the number 1" />
-            <input id="num-2" type="text" placeholder="Enter the number 2" />
-            <select name="operation" id="operation">
-                <option value="add">Addition</option>
-                <option value="sub">Subtraction</option>
-                <option value="mul">Multiplication</option>
-                <option value="div">Division</option>
-            </select>
-        </div>
-        <button class="btn" onclick="apiCall()">Calculate</button>
-        <h2>Result: <span id="result">Waiting</span></h2>
+  <nav>
+    <div class="nav-wrapper navbar-size">
+      <a href="#" class="brand-logo"><img class="user-image-size" src="images/logo.jpg" /></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a target="_blank" href="https://www.linkedin.com/in/misa-aghera/">LinkedIn</a>
+        </li>
+      </ul>
     </div>
+  </nav>
+  <main class="main-body">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center-align">
+          <h1 id="heading">Welcome to SIT 725 Week-3</h1>
+          <p class="flow-text">This is a demo application that tries to use few components from materialize and through
+            this practical we try to have some fun with materialize and its components</p>
+        </div>
+        <div class="col s12 center-align">
+          <img src="images/livedemo.png" alt="test image" class="materialboxed materialboxed-image">
+        </div>
+        <div class="col s12 center-align">
+          <a href="" class="waves-effect waves-light btn click-me-button modal-trigger" data-target="modal1"
+            id="clickMe"><i class="material-icons left">auto_fix_high</i>Click Me</a>
+        </div>
+
+        <div class="row" id="card-section">
+          <div class="col s4 center-align">
+            <div class="card medium">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/kitten.jpg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Kitten<i
+                    class="material-icons right">more_vert</i></span>
+                <p><a href="#">About this kitten</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Kitten<i class="material-icons right">close</i></span>
+                <p class="card-text">Hello There! I just wanted to say HI to you guys. See ya!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="modal1" class="modal modal-fixed-footer">
+      <div class="row modal-content">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12 center-align">
+              <a class="waves-effect waves-light btn" id="formSubmit">submit</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts.js"></script>
 </body>
-<script>
-    const apiCall = async () => {
-        const value1 = document.getElementById('num-1').value;
-        const value2 = document.getElementById('num-2').value;
-        const operation = document.getElementById('operation').value;
-        const elem = document.getElementById('result_heading');
-
-        const setSuccessClass = () => {
-            elem.classList.remove("result_heading_error");
-            elem.classList.add("result_heading_success");
-        }
-
-        const setErrorClass = () => {
-            elem.classList.remove("result_heading_success");
-            elem.classList.add("result_heading_error");
-        }
-        try {
-            const response = await fetch(`/calculate?value1=${value1}&value2=${value2}&operation=${operation}`);
-            const dataObj = await response.json();
-            const resultElem = document.getElementById('result');
-            resultElem.innerHTML = dataObj.data ? dataObj.data :  " " + dataObj.message;
-            dataObj.statusCode == 200 ? setSuccessClass() : setErrorClass(); 
-        } catch (error) {
-            console.log("Error: ", error);
-        }
-    };
-</script>
 
 </html>

@@ -1,15 +1,31 @@
 {
-  "name": "sit725-2024-t2-prac2",
+  "name": "sit725-2024-t2-prac3",
   "version": "1.0.0",
+  "description": "sit 725 week 3 prac",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "Express",
+    "Materialize",
+    "HTML",
+    "JS",
+    "CSS"
+  ],
+  "author": "Misa Manojbhai Aghera",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/MisaAghera/sit725-2024-t2-prac3/issues"
+  },
+  "homepage": "https://github.com/MisaAghera/sit725-2024-t2-prac3/blob/main/README.md",
   "dependencies": {
     "express": "^4.19.2"
   },
